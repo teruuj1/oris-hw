@@ -65,6 +65,7 @@ public class Sample {
             }
             System.out.println(connection.getResponseCode());
             System.out.println(readResponse(connection));
+            connection.disconnect();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -77,6 +78,7 @@ public class Sample {
             connection.setRequestMethod("DELETE");
             System.out.println(connection.getResponseCode());
             System.out.println(readResponse(connection));
+            connection.disconnect();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
