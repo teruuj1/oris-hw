@@ -3,11 +3,17 @@ package ru.kpfu.itis.servlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 
 @WebServlet(urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
+
+    private static final Logger LOG =
+            LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +37,9 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = req.getSession();
         if (session != null) {
             session.invalidate();
+            LOG.info("session has ended");
         }
         resp.sendRedirect("index.html");
+        LOG.info("user has logged out :((");
     }
 }
