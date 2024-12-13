@@ -8,7 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.kpfu.itis.dto.UserDto;
+import ru.kpfu.itis.service.UserService;
+import ru.kpfu.itis.service.impl.UserServiceImpl;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
@@ -21,10 +22,17 @@ public class UserServlet extends HttpServlet {
     private static final Logger LOG =
             LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    private final UserService userService = new UserServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("users", List.of(new UserDto("Kaveh", 1, "Kaveykavey"), new UserDto("Al-Haitham", 10, "ilovekaveh")));
-        req.getRequestDispatcher("users.ftl").forward(req, resp);
+        String login = req.getParameter("login");
+        if (login != null) {
+            req.setAttribute("users", List.of("feokff", ";l,;,l;,"));
+        } else {
+            req.setAttribute("users", userService.getAll());
+        }
         LOG.info("users page has been opened");
+        req.getRequestDispatcher("users.ftl").forward(req, resp);
     }
 }

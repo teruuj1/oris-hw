@@ -4,23 +4,23 @@ public class UserDto {
 
     private String name;
     private Integer score;
-    private String login;
+    private String lastname;
 
-    public UserDto(String name, Integer score, String login) {
+    public UserDto(String name, Integer score, String lastname) {
         this.name = name;
         this.score = score;
-        this.login = login;
+        this.lastname = lastname;
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getLastName() {
+        return lastname;
     }
 
-    public String getLogin() {
-        return login;
+    public Integer getScore() {
+        return score;
     }
 }

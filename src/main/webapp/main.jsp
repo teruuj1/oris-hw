@@ -42,7 +42,7 @@
     Cookie user = <%=cookieUser%>
 </h3>
 
-<a href="/users">users</a>
+<a href="${pageContext.request.contextPath}/users">users</a>
 
 
 </body>
