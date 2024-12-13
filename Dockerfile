@@ -1,3 +1,5 @@
-FROM tomcat
+FROM tomcat:10.1.31-jdk21-temurin
 
-COPY target/oris-1.0-SNAPSHOT /user/local/tomcat/webapps/ROOT.war
+WORKDIR /usr/local/tomcat
+
+COPY target/oris-1.0-SNAPSHOT.war /user/local/tomcat/webapps/ROOT.war
